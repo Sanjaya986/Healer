@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Healer – Personal Doctor (Starter)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+    <style>
+  @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+</style>
+
+</head>
+<body class="min-h-screen bg-white text-gray-900 antialiased overflow-x-hidden">
+
+  <!-- ============= NAVBAR ============= -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-black/50 backdrop-blur supports-[backdrop-filter]:bg-black/50">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+      <a href="#" class="flex items-center gap-2">
+        <img src="/img/logo-light-retina.webp" class="h-8 w-auto" alt="Healer logo" />
+      
+      </a>
+
+      <!-- desktop links -->
+      <ul class="hidden md:flex items-center gap-8 text-white">
+        <li><a class="hover:text-black"  href="index.html" >Home</a></li>
+
+        <li class="relative group">
+          <button class="hover:text-black flex items-center gap-1">
+            Services
+            <svg class="w-4 h-4 mt-[1px]" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.25a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
+          </button>
+          <div class="absolute left-0 mt-3 w-56 rounded-xl bg-black text-white shadow-lg ring-1 ring-white/10 hidden group-hover:block">
+            <ul class="py-2 text-sm">
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Medical Center</a></li>
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Private Clinic</a></li>
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Hospital</a></li>
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Medical Lab</a></li>
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Dentist</a></li>
+              <li><a class="block px-4 py-2 hover:bg-white/10" href="#">Doctor Personal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a href="appoint.html" class="hover:text-black">Appointment</a></li>
+
+        <li>
+          <a href="contact.html" class="inline-flex items-center hover:bg-gray-300  hover:text-black py-2 px-4 rounded-md text-sm font-medium">
+            Contact Us
+          </a>
+        </li>
+      </ul>
+
+      <!-- mobile toggler -->
+      <button id="menuBtn" class="md:hidden text-white text-3xl leading-none">☰</button>
+    </nav>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden">
+      <ul class="px-6 pb-6 space-y-4 text-white">
+        <li><a class="block py-2 border-b border-white/10" href="#">Home</a></li>
+        <li class="border-b border-white/10">
+          <details class="group">
+            <summary class="py-2 cursor-pointer list-none flex items-center justify-between">
+              <span>Services</span>
+              <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.25a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
+            </summary>
+            <ul class="pl-3 pb-2 space-y-2 text-sm">
+              <li><a class="block py-1" href="#">Medical Center</a></li>
+              <li><a class="block py-1" href="#">Private Clinic</a></li>
+              <li><a class="block py-1" href="#">Hospital</a></li>
+              <li><a class="block py-1" href="#">Medical Lab</a></li>
+              <li><a class="block py-1" href="#">Dentist</a></li>
+              <li><a class="block py-1" href="#">Doctor Personal</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a class="block py-2 border-b border-white/10" href="appoint.html">Appointment</a></li>
+        <li>
+          <a href="contact.html" class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium">
+            Contact Us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- spacer for fixed header -->
+  <div class="h-16"></div>
+
+  <!-- ============= HERO ============= -->
+<section id="heroSection" class="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden">
+  <!-- background image as <img> for perfect cover on mobile -->
+  <div class="absolute inset-0">
+    <img src="img/doctor.jpg" alt="Doctor background"
+         class="w-full h-full object-center object-top md:object-center" />
+    <div class="absolute inset-0 bg-black/45"></div>
+  </div>
+
+  <!-- content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-24 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 text-white">
+    <div class="flex-1 flex flex-col items-start md:items-start text-left gap-6">
+
+      <h1 id="heroHeading"
+          class="opacity-0 translate-y-8 transition duration-700 font-extrabold leading-tight
+                 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+        Your health,<br class="hidden sm:block" />
+        personalized <br />by expert <br />doctors
+      </h1>
+
+      <!-- Circle Container -->
+<div id="circleWrapper"
+     class="relative flex items-center justify-start 
+            w-[50vw] sm:w-[40vw] md:w-[320px] lg:w-[360px] 
+            aspect-square select-none mx-0">
+
+  <!-- Rotating Text -->
+  <div class="absolute inset-0 animate-[spin_17s_linear_infinite] will-change-transform">
+    <svg id="circleSVG" viewBox="0 0 300 300" class="w-full h-full">
+      <defs>
+        <path id="circlePath"
+              d="M150,150 m -120,0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" />
+      </defs>
+      <text id="circleText" class="fill-white tracking-[0.02em]">
+        <textPath id="textPath" href="#circlePath" startOffset="0%"></textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- Play Button (always perfectly centered inside circle) -->
+  <button aria-label="View presentation"
+          class="absolute inset-0 m-auto flex items-center justify-center 
+                 text-white cursor-pointer transition 
+                 hover:scale-110 hover:text-yellow-400">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" 
+         viewBox="0 0 24 24" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  </button>
+</div>
+
+
+      <!-- stats -->
+<div class="mt-6 flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+  <span id="statNumber"
+        class="opacity-0 translate-y-8 transition duration-700 text-yellow-400 text-5xl sm:text-6xl lg:text-8xl font-bold leading-none">
+    12
+  </span>
+  <div class="flex flex-col gap-2 sm:gap-1">
+    <span id="statText1"
+          class="opacity-0 translate-y-8 transition duration-700 text-white text-base sm:text-lg md:text-xl max-w-[280px] lg:max-w-none leading-snug">
+       Years in creating effective medicine
+    </span>
+    <span id="statText2"
+          class="opacity-0 translate-y-8 transition duration-700 text-white text-base sm:text-lg md:text-xl max-w-[280px] lg:max-w-none leading-snug">
+       Expert medical care safeguarding your health with dedication and compassion
+    </span>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+  <!-- ============= SERVICES ============= -->
+<section id="services" class="bg-gray-50 py-16 sm:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 id="servicesHeading"
+        class="opacity-0 translate-y-8 transition duration-700 text-3xl sm:text-4xl font-bold text-blue-600 text-center">
+      Our Services
+    </h2>
+
+    <!-- grid wrapper -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- card 1 -->
+      <article class="service-card opacity-0 translate-y-8 transition duration-700 bg-white shadow p-6 flex flex-col">
+         <img src="img/doctur consult (8).jpg" alt="" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-3">Medical Care</h3>
+        <p class="text-gray-600 mb-6">Comprehensive care, tailored to every need and life stage.</p>
+        <a href="#" id="moreServiceBtn"
+           class="mt-auto inline-flex justify-center bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium block sm:hidden">
+          More Services
+        </a>
+      </article>
+
+      <!-- other 3 cards (hidden on mobile initially) -->
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
+        <img src="img/doctur consult.jpg" alt=""
+             class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Doctor Consult</h3>
+        <p class="text-gray-600">Expert medical advice tailored to your needs.</p>
+      </article>
+
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
+        <img src="img/health check.jpg" alt=""
+             class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Health Check</h3>
+        <p class="text-gray-600">Regular exams to monitor overall well-being.</p>
+      </article>
+
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
+        <img src="img/care plan.jpg" alt=""
+             class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Care Plan</h3>
+        <p class="text-gray-600">Personalized treatment and ongoing guidance.</p>
+      </article>
+    </div>
+  </div>
+</section>
+  <!-- ============= ABOUT SPLIT ============= -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
+      <!-- image card -->
+      <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-xl">
+        <img src="img/doctur consult (6).jpg" class="absolute inset-0 w-full h-full object-cover" alt="">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute bottom-6 left-6 right-6 bg-black/70 text-white rounded-2xl p-6">
+          <h4 class="text-2xl font-semibold">Trusted healthcare for every stage</h4>
+          <p class="text-sm text-white/80 mt-3">Comprehensive care, tailored to every need and life stage.</p>
+        </div>
+      </div>
+
+      <!-- text card -->
+      <div class="bg-gray-50 rounded-3xl shadow p-8 flex flex-col justify-between">
+        <div>
+          <p class="text-blue-600 font-medium">ABOUT US</p>
+          <h3 class="text-3xl sm:text-4xl font-bold mt-2">Expert medical help with care</h3>
+          <p class="text-gray-600 mt-4">We offer quality care tailored to each patient's needs, combining expertise with support.</p>
+        </div>
+        <div class="mt-8">
+          <a href="#" class="inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">More Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FEATURES ============= -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 sm:gap-10 lg:grid-cols-3">
+
+    <!-- Smart Control -->
+    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
+      <!-- Icon -->
+      <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
+        <svg viewBox="0 0 256 256" class="w-7 h-7 text-orange-500" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="128" cy="88" r="32"/>
+            <line x1="128" y1="74" x2="128" y2="102"/>
+            <line x1="114" y1="88" x2="142" y2="88"/>
+            <path d="M52 150c22-10 40-2 56 10c12 9 18 13 18 20v18h-36c-3 0-6-2-8-5l-26-33c-3-4-2-8-4-10z"/>
+            <path d="M204 150c-22-10-40-2-56 10c-12 9-18 13-18 20v18h36c3 0 6-2 8-5l26-33c3-4 2-8 4-10z"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Text -->
+      <div>
+        <h4 class="font-semibold mb-1 text-gray-900">Smart control</h4>
+        <p class="text-gray-600 text-sm">Intuitive management and customization of workflows.</p>
+      </div>
+    </div>
+
+    <!-- Secure Access -->
+    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
+      <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V7l-8-4-8 4v5c0 6 8 10 8 10z" />
+        </svg>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-1 text-gray-900">Secure access</h4>
+        <p class="text-gray-600 text-sm">Reliable data protection with flexible permissions.</p>
+      </div>
+    </div>
+
+    <!-- Task Manager -->
+    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
+      <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6m-6-4h6m-7-4h8m-9 8V7a2 2 0 012-2h6a2 2 0 012 2v10a2 2 0 01-2 2H9a2 2 0 01-2-2z" />
+        </svg>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-1 text-gray-900">Task manager</h4>
+        <p class="text-gray-600 text-sm">Convenient task tracking and efficient planning.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- ============= MEET DOCTOR ============= -->
+<section class="w-full bg-[url('img/meet-doctor.jpg')] bg-cover bg-center relative">
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex items-center justify-center min-h-[80vh] sm:min-h-[90vh] px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center text-white">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
+        Meet with trusted doctors for care
+      </h2>
+      <a href="appoint.html"
+        class="mt-8 inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-md text-lg">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ============= PATIENT SAY ============= -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <p class="uppercase tracking-widest text-gray-500 text-sm">Patients Say</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">True words from our dear patients</h2>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- card -->
+        <div class="bg-white rounded-2xl shadow p-6">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="img/mary jones.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <div>
+              <h4 class="font-bold">Mary Jones</h4>
+              <p class="text-sm text-gray-500">Laketown, OH</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Healer is a place where you feel safe and well cared for. Attentive specialists, modern methods and a warm approach.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="img/andrew walker.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <div>
+              <h4 class="font-bold">Andrew Walker</h4>
+              <p class="text-sm text-gray-500">Omaha, NE</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Skilled doctors, smart tools and a patient-first focus. Every visit shows trust and support.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="img/eva brown.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <div>
+              <h4 class="font-bold">Eva Brown</h4>
+              <p class="text-sm text-gray-500">Austin, TX</p>
+            </div>
+          </div>
+          <p class="text-gray-600">Dedicated doctors, personalized care and a commitment to well-being.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= HEALTH CARE ============= -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h3 class="text-3xl sm:text-4xl font-bold text-gray-900">Comprehensive healthcare services</h3>
+        <hr class="border-t border-black my-5">
+        <ul class="space-y-2 text-gray-700 text-lg">
+          <li class="hover:text-gray-500">Digital diagnostics</li>
+          <li class="hover:text-gray-500">General check-ups</li>
+          <li class="hover:text-gray-500">Surgical treatments</li>
+          <li class="hover:text-gray-500">Pregnancy care</li>
+          <li class="hover:text-gray-500">Vaccination & immunity</li>
+        </ul>
+      </div>
+      <div class="relative w-full h-[420px] rounded-3xl overflow-hidden shadow-xl">
+        <img src="img/doctor-bg.jpg" class="absolute inset-0 w-full h-full object-cover" alt="">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============= FOOTER ============= -->
+  <footer id="contact" class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-semibold mb-3">Healer</h4>
+        <p class="text-white/70 text-sm">Quality care tailored to your needs.</p>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-3">Links</h5>
+        <ul class="space-y-2 text-white/80 text-sm">
+          <li><a href="#" class="hover:text-white">Home</a></li>
+          <li><a href="#services" class="hover:text-white">Services</a></li>
+          <li><a href="#appointment" class="hover:text-white">Appointment</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-3">Contact</h5>
+        <ul class="space-y-2 text-white/80 text-sm">
+          <li>support@healer.example</li>
+          <li>+91 90000 00000</li>
+          <li>Mon–Sat, 9am–7pm</li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-3">Newsletter</h5>
+        <form class="flex gap-2">
+          <input type="email" class="flex-1 rounded-md bg-white/10 px-3 py-2 placeholder-white/60 outline-none focus:ring-2 focus:ring-orange-500" placeholder="Email address" />
+          <button class="bg-orange-500 hover:bg-orange-600 px-4 rounded-md">Join</button>
+        </form>
+      </div>
+    </div>
+    <p class="text-center text-white/60 text-sm mt-10">© 2025 Healer. All rights reserved.</p>
+  </footer>
+
+  <!-- ============= SCRIPTS (tiny) ============= -->
+  <script src="script.js"></script>
+</body>
+</html>
