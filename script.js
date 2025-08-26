@@ -4,6 +4,13 @@
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
+    // Close menu when clicked outside
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      mobileMenu.classList.add("hidden");
+    }
+  });
+  
     // nav background on scroll
     const header = document.querySelector('header');
     const setHeaderBg = () => {
@@ -99,50 +106,232 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 //   service cards
- document.addEventListener("DOMContentLoaded", () => {
-    const serviceSection = document.getElementById("services");
-    const heading = document.getElementById("servicesHeading");
-    const cards = document.querySelectorAll(".service-card");
-    const moreBtn = document.getElementById("moreServiceBtn");
-    const extraCards = document.querySelectorAll(".extra-service");
+document.addEventListener("DOMContentLoaded", () => {
+  // 👉 Mobile "More Services" animation
+  const moreBtn = document.getElementById("moreServiceBtn");
+  const extraCards = document.querySelectorAll(".extra-service");
 
-    // 1️⃣ Scroll-trigger animation (desktop + mobile)
+  if (moreBtn) {
+    moreBtn.addEventListener("click", e => {
+      e.preventDefault();
+      extraCards.forEach((card, i) => {
+        setTimeout(() => {
+          card.classList.remove("hidden");
+          card.classList.add("opacity-0", "translate-y-8");
+          void card.offsetWidth;
+          card.classList.remove("opacity-0", "translate-y-8");
+        }, i * 400);
+      });
+      moreBtn.classList.add("pointer-events-none", "opacity-70");
+    });
+  }
+
+  // 👉 Desktop 3-card slider
+  const slider = document.getElementById("servicesSlider");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (slider) {
+    const totalCards = slider.children.length;
+    let currentIndex = 0; // current first card index
+    const visibleCards = 3; // ek row me 3 dikhte hain
+
+    function updateSlider() {
+      const cardWidthPercent = 100 / visibleCards; // har card ka width % me
+      const translateX = -(currentIndex * cardWidthPercent);
+      slider.style.transform = `translateX(${translateX}%)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIndex < totalCards - visibleCards) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    updateSlider();
+  }
+});
+
+
+
+
+
+
+//  about us section
+document.addEventListener("DOMContentLoaded", () => {
+  const aboutSection = document.getElementById("aboutSection");
+  const aboutCards = document.querySelectorAll(".about-card");
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate each card ek-ek karke
+          aboutCards.forEach((card, i) => {
+            setTimeout(() => {
+              card.classList.remove("opacity-0", "translate-y-10");
+            }, i * 400); // har card ke beech 400ms ka delay
+          });
+
+          obs.unobserve(aboutSection); // ek hi baar chale
+        }
+      });
+    },
+    { threshold: 0.3 } // section 30% visible hote hi trigger hoga
+  );
+
+  observer.observe(aboutSection);
+});
+
+//  smart control section
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".feature-card");
+
+    // Scroll animation (mobile + desktop)
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.remove("opacity-0", "translate-y-8");
+          }, i * 300);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+
+    // Desktop hover animation
+    if (window.innerWidth >= 768) {
+      cards.forEach(card => {
+        card.classList.add("transition", "duration-300");
+        card.addEventListener("mouseenter", () => {
+          card.classList.add("-translate-y-2", "shadow-lg");
+        });
+        card.addEventListener("mouseleave", () => {
+          card.classList.remove("-translate-y-2", "shadow-lg");
+        });
+      });
+    }
+  });
+ /// meet with doctor section
+ document.addEventListener("DOMContentLoaded", () => {
+    const meetSection = document.getElementById("meetDoctor");
+    const meetHeading = document.getElementById("meetHeading");
+    const meetBtn = document.getElementById("meetBtn");
+
     const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            setTimeout(() => heading.classList.remove("opacity-0", "translate-y-8"), 200);
+            setTimeout(() => {
+              meetHeading.classList.remove("opacity-0", "translate-y-10");
+            }, 200);
+            setTimeout(() => {
+              meetBtn.classList.remove("opacity-0", "translate-y-10");
+            }, 600);
 
-            cards.forEach((card, i) => {
-              setTimeout(() => {
-                card.classList.remove("opacity-0", "translate-y-8");
-              }, (i + 1) * 300);
-            });
-
-            obs.unobserve(serviceSection);
+            obs.unobserve(meetSection);
           }
         });
       },
       { threshold: 0.3 }
     );
-    observer.observe(serviceSection);
 
-    // 2️⃣ Mobile "More Services" click animation
-    if (moreBtn) {
-      moreBtn.addEventListener("click", e => {
-        e.preventDefault();
-
-        extraCards.forEach((card, i) => {
-          setTimeout(() => {
-            card.classList.remove("hidden"); // show card
-            // trigger animation by forcing reflow
-            card.offsetHeight;
-            card.classList.remove("opacity-0", "translate-y-8");
-          }, (i + 1) * 300);
-        });
-
-        // button upar chala jaye (Medical Care card ki jagah fix)
-        moreBtn.classList.add("pointer-events-none", "opacity-70");
-      });
-    }
+    observer.observe(meetSection);
   });
+
+  // PATIENT SAY
+  document.addEventListener("DOMContentLoaded", () => {
+  // Scroll-triggered animation for heading + desktop cards
+  const section = document.getElementById("patientsSay");
+  const sub = document.getElementById("patientsSub");
+  const heading = document.getElementById("patientsHeading");
+  const cards = document.querySelectorAll(".testimonial-card");
+
+  if (section) {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Headings
+            setTimeout(() => sub?.classList.remove("opacity-0", "translate-y-8"), 200);
+            setTimeout(() => heading?.classList.remove("opacity-0", "translate-y-8"), 500);
+            // Desktop cards (stagger)
+            cards.forEach((card, i) => {
+              setTimeout(() => card.classList.remove("opacity-0", "translate-y-8"), 800 + i * 300);
+            });
+            obs.unobserve(section);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(section);
+  }
+
+  // Mobile slider (only visible on < md)
+  const slider = document.getElementById("patientsSlider");
+  const prevBtn = document.getElementById("prevSlide");
+  const nextBtn = document.getElementById("nextSlide");
+  let currentIndex = 0;
+
+  function updateSlider() {
+    if (!slider) return;
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  if (nextBtn && prevBtn && slider) {
+    const total = slider.children.length;
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % total;
+      updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateSlider();
+    });
+
+    // 👉 Swipe / Touch support
+    let startX = 0;
+    let isSwiping = false;
+
+    slider.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+      if (!isSwiping) return;
+      const currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+
+      // agar finger 50px se jyada move hui to slide change
+      if (diff > 50) {
+        // swipe left → next
+        currentIndex = (currentIndex + 1) % total;
+        updateSlider();
+        isSwiping = false;
+      } else if (diff < -50) {
+        // swipe right → prev
+        currentIndex = (currentIndex - 1 + total) % total;
+        updateSlider();
+        isSwiping = false;
+      }
+    });
+
+    slider.addEventListener("touchend", () => {
+      isSwiping = false;
+    });
+  }
+});

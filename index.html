@@ -58,26 +58,26 @@
     <!-- mobile menu -->
     <div id="mobileMenu" class="md:hidden hidden">
       <ul class="px-6 pb-6 space-y-4 text-white">
-        <li><a class="block py-2 border-b border-white/10" href="#">Home</a></li>
+        <li><a class="block py-2 border-b hover:text-black hover:text-1x3 border-white/10" href="#">Home</a></li>
         <li class="border-b border-white/10">
           <details class="group">
-            <summary class="py-2 cursor-pointer list-none flex items-center justify-between">
+            <summary class="py-2 cursor-pointer list-none hover:text-black flex items-center justify-between">
               <span>Services</span>
               <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.25a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"/></svg>
             </summary>
             <ul class="pl-3 pb-2 space-y-2 text-sm">
-              <li><a class="block py-1" href="#">Medical Center</a></li>
-              <li><a class="block py-1" href="#">Private Clinic</a></li>
-              <li><a class="block py-1" href="#">Hospital</a></li>
-              <li><a class="block py-1" href="#">Medical Lab</a></li>
-              <li><a class="block py-1" href="#">Dentist</a></li>
-              <li><a class="block py-1" href="#">Doctor Personal</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Medical Center</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Private Clinic</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Hospital</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Medical Lab</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Dentist</a></li>
+              <li><a class="block py-1 hover:text-black" href="#">Doctor Personal</a></li>
             </ul>
           </details>
         </li>
-        <li><a class="block py-2 border-b border-white/10" href="appoint.html">Appointment</a></li>
+        <li><a class="block py-2 border-b hover:text-black border-white/10" href="appoint.html">Appointment</a></li>
         <li>
-          <a href="contact.html" class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium">
+          <a href="contact.html" class="inline-flex items-center hover:text-black text-white py-2 px-4 rounded-md text-sm font-medium">
             Contact Us
           </a>
         </li>
@@ -133,7 +133,7 @@
                  text-white cursor-pointer transition 
                  hover:scale-110 hover:text-yellow-400">
     <svg xmlns="http://www.w3.org/2000/svg" fill="white" 
-         viewBox="0 0 24 24" class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
+         viewBox="0 0 24 24" class="w-7 h-10 sm:w-8 sm:h-8 md:w-14 md:h-14">
       <path d="M8 5v14l11-7z" />
     </svg>
   </button>
@@ -161,84 +161,161 @@
   </div>
 </section>
   <!-- ============= SERVICES ============= -->
-<section id="services" class="bg-gray-50 py-16 sm:py-20">
+<section id="services" class="bg-gray-50 py-16 sm:py-20 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 id="servicesHeading"
-        class="opacity-0 translate-y-8 transition duration-700 text-3xl sm:text-4xl font-bold text-blue-600 text-center">
+        class="text-3xl sm:text-4xl font-bold text-blue-600 text-center mb-10">
       Our Services
     </h2>
 
-    <!-- grid wrapper -->
-    <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- card 1 -->
-      <article class="service-card opacity-0 translate-y-8 transition duration-700 bg-white shadow p-6 flex flex-col">
-         <img src="img/doctur consult (8).jpg" alt="" class="w-full h-40 object-cover rounded-lg mb-4">
+    <!-- ✅ Mobile Layout (stack + More Services button) -->
+    <div class="grid grid-cols-1 gap-6 md:hidden">
+      <!-- first card -->
+      <article class="service-card bg-white shadow p-6 flex flex-col">
+        <img src="img/doctur consult (8).jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold mb-3">Medical Care</h3>
         <p class="text-gray-600 mb-6">Comprehensive care, tailored to every need and life stage.</p>
         <a href="#" id="moreServiceBtn"
-           class="mt-auto inline-flex justify-center bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium block sm:hidden">
+           class="mt-auto inline-flex justify-center bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium">
           More Services
         </a>
       </article>
 
-      <!-- other 3 cards (hidden on mobile initially) -->
-      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
-        <img src="img/doctur consult.jpg" alt=""
-             class="w-full h-40 object-cover rounded-lg mb-4">
+      <!-- hidden cards -->
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden">
+        <img src="img/doctur consult.jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold mb-2">Doctor Consult</h3>
         <p class="text-gray-600">Expert medical advice tailored to your needs.</p>
       </article>
 
-      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
-        <img src="img/health check.jpg" alt=""
-             class="w-full h-40 object-cover rounded-lg mb-4">
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden">
+        <img src="img/health check.jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold mb-2">Health Check</h3>
         <p class="text-gray-600">Regular exams to monitor overall well-being.</p>
       </article>
 
-      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden sm:block">
-        <img src="img/care plan.jpg" alt=""
-             class="w-full h-40 object-cover rounded-lg mb-4">
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden">
+        <img src="img/care plan.jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
         <h3 class="text-xl font-semibold mb-2">Care Plan</h3>
         <p class="text-gray-600">Personalized treatment and ongoing guidance.</p>
       </article>
+
+      <article class="service-card extra-service opacity-0 translate-y-8 transition duration-700 bg-white rounded-2xl shadow p-6 hidden">
+        <img src="img/care plan.jpg" alt="" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h3 class="text-xl font-semibold mb-2">Nurse care</h3>
+        <p class="text-gray-600">Compassionate nurse care ensuring comfort, safety, and support at every step of your health journey</p>
+      </article>
+
+      
+    </div>
+
+    <!-- ✅ Desktop Slider -->
+    <div class="relative hidden md:block">
+      <!-- cards container -->
+      <div id="servicesSlider"
+           class="flex transition-transform duration-700 ease-in-out"
+           style="transform: translateX(0%)">
+        <!-- 6 cards -->
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/medical care.png" alt="" class="w-full h-50 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3">Medical Care</h3>
+          <p class="text-gray-600 mb-6">Comprehensive care for every need.</p>
+        </article>
+
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/doctur consult.jpg" alt="" class="w-full h-65 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3">Doctor Consult</h3>
+          <p class="text-gray-600 mb-6">Expert advice tailored to your needs.</p>
+        </article>
+
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/health check.jpg" alt="" class="w-full h-65 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3">Health Check</h3>
+          <p class="text-gray-600 mb-6">Monitor well-being with regular exams.</p>
+        </article>
+
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/care plan.jpg" alt="" class="w-full h-65 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3">Care Plan</h3>
+          <p class="text-gray-600 mb-6">Personalized treatment guidance.</p>
+        </article>
+
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/free tablet.jpg" alt="" class="w-full h-65 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3">Free tablet</h3>
+          <p class="text-gray-600 mb-6">Get free tablets with your treatment plan, making your recovery smoother and more affordable</p>
+        </article>
+
+        <article class="service-card bg-white shadow p-6 flex flex-col w-[32%] mx-2 flex-shrink-0">
+          <img src="img/nurse.jpg" alt="" class="w-full h-65 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-3"> Nurse care</h3>
+          <p class="text-gray-600 mb-6">Compassionate nurse care ensuring comfort, safety, and support at every step of your health journey</p>
+        </article>
+      </div>
+
+      <!-- navigation buttons -->
+     <button id="prevBtn" 
+  class="absolute left-2 top-1/2 -translate-y-1/2 text-black text-6xl font-bold hover:scale-125 transition">
+  ‹
+</button>
+
+<button id="nextBtn" 
+  class="absolute right-2 top-1/2 -translate-y-1/2 text-black text-6xl font-bold hover:scale-125 transition">
+  ›
+</button>
+
+
     </div>
   </div>
 </section>
-  <!-- ============= ABOUT SPLIT ============= -->
-  <section class="py-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
-      <!-- image card -->
-      <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-xl">
-        <img src="img/doctur consult (6).jpg" class="absolute inset-0 w-full h-full object-cover" alt="">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute bottom-6 left-6 right-6 bg-black/70 text-white rounded-2xl p-6">
-          <h4 class="text-2xl font-semibold">Trusted healthcare for every stage</h4>
-          <p class="text-sm text-white/80 mt-3">Comprehensive care, tailored to every need and life stage.</p>
-        </div>
-      </div>
 
-      <!-- text card -->
-      <div class="bg-gray-50 rounded-3xl shadow p-8 flex flex-col justify-between">
-        <div>
-          <p class="text-blue-600 font-medium">ABOUT US</p>
-          <h3 class="text-3xl sm:text-4xl font-bold mt-2">Expert medical help with care</h3>
-          <p class="text-gray-600 mt-4">We offer quality care tailored to each patient's needs, combining expertise with support.</p>
-        </div>
-        <div class="mt-8">
-          <a href="#" class="inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">More Details</a>
-        </div>
+
+
+  <!-- ============= ABOUT SPLIT ============= -->
+  <section id="aboutSection" class="py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
+    
+    <!-- image card -->
+   <div class="relative h-[420px] rounded-3xl overflow-hidden shadow-xl group">
+  <img src="img/doctur consult (6).jpg" class="absolute inset-0 w-full h-full object-cover" alt="">
+  <div class="absolute inset-0 bg-black/40"></div>
+  
+  <!-- Black overlay card -->
+  <div class="absolute bottom-6 left-6 right-6 bg-black/70 text-white rounded-2xl 
+              p-6 min-h-[200px] flex flex-col justify-center
+              transform transition duration-500 group-hover:-translate-y-2">
+    <h4 class="text-2xl font-semibold">Trusted healthcare for every stage</h4>
+    <p class="text-sm text-white/80 mt-3">Comprehensive care, tailored to every need and life stage.</p>
+  </div>
+</div>
+
+
+
+    <!-- text card -->
+    <div class="about-card opacity-0 translate-y-10 transition duration-700 ease-out bg-gray-50 rounded-3xl shadow p-8 flex flex-col justify-between">
+      <div>
+        <p class="text-blue-600 font-medium">ABOUT US</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mt-2">Expert medical help with care</h3>
+        <p class="text-gray-600 mt-4">We offer quality care tailored to each patient's needs, combining expertise with support.</p>
+      </div>
+      <div class="mt-8">
+        <a href="#" class="inline-flex bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">More Details</a>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
+
+
+
 
   <!-- ============= FEATURES ============= -->
 <section class="bg-gray-50 py-16">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 sm:gap-10 lg:grid-cols-3">
-
+    
     <!-- Smart Control -->
-    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
-      <!-- Icon -->
+    <div class="feature-card flex items-start gap-4 bg-white rounded-2xl shadow p-6 opacity-0 translate-y-8 transition-all duration-700">
       <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
         <svg viewBox="0 0 256 256" class="w-7 h-7 text-orange-500" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
@@ -250,7 +327,6 @@
           </g>
         </svg>
       </div>
-      <!-- Text -->
       <div>
         <h4 class="font-semibold mb-1 text-gray-900">Smart control</h4>
         <p class="text-gray-600 text-sm">Intuitive management and customization of workflows.</p>
@@ -258,7 +334,7 @@
     </div>
 
     <!-- Secure Access -->
-    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
+    <div class="feature-card flex items-start gap-4 bg-white rounded-2xl shadow p-6 opacity-0 translate-y-8 transition-all duration-700">
       <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 22s8-4 8-10V7l-8-4-8 4v5c0 6 8 10 8 10z" />
@@ -271,7 +347,7 @@
     </div>
 
     <!-- Task Manager -->
-    <div class="flex items-start gap-4 bg-white rounded-2xl shadow p-6">
+    <div class="feature-card flex items-start gap-4 bg-white rounded-2xl shadow p-6 opacity-0 translate-y-8 transition-all duration-700">
       <div class="w-14 h-14 rounded-xl grid place-items-center bg-orange-50 flex-shrink-0">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17h6m-6-4h6m-7-4h8m-9 8V7a2 2 0 012-2h6a2 2 0 012 2v10a2 2 0 01-2 2H9a2 2 0 01-2-2z" />
@@ -286,73 +362,132 @@
   </div>
 </section>
 
-
-
-  <!-- ============= MEET DOCTOR ============= -->
-<section class="w-full bg-[url('img/meet-doctor.jpg')] bg-cover bg-center relative">
+<!-- ============= MEET DOCTOR ============= -->
+<section id="meetDoctor" class="w-full bg-[url('img/meet-doctor.jpg')] bg-cover bg-center relative">
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black/40"></div>
 
   <!-- Content -->
   <div class="relative z-10 flex items-center justify-center min-h-[80vh] sm:min-h-[90vh] px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center text-white">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold">
+      <h2 id="meetHeading"
+          class="opacity-0 translate-y-10 transition-all duration-700 text-3xl sm:text-4xl lg:text-5xl font-bold">
         Meet with trusted doctors for care
       </h2>
-      <a href="appoint.html"
-        class="mt-8 inline-flex bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-md text-lg">
+      <a id="meetBtn" href="appoint.html"
+        class="mt-8 inline-flex opacity-0 translate-y-10 transition-all duration-700 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-md text-lg">
         Get Started
       </a>
     </div>
   </div>
 </section>
 
-
   <!-- ============= PATIENT SAY ============= -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <p class="uppercase tracking-widest text-gray-500 text-sm">Patients Say</p>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">True words from our dear patients</h2>
-      </div>
+  <section id="patientsSay" class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Heading -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <p id="patientsSub"
+         class="opacity-0 translate-y-8 transition-all duration-700 uppercase tracking-widest text-gray-500 text-sm">
+        Patients Say
+      </p>
+      <h2 id="patientsHeading"
+          class="opacity-0 translate-y-8 transition-all duration-700 text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
+        True words from our dear patients
+      </h2>
+    </div>
 
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- card -->
-        <div class="bg-white rounded-2xl shadow p-6">
+    <div class="mt-10">
+      <!-- Desktop Grid -->
+      <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="testimonial-card opacity-0 translate-y-8 transition-all duration-700 bg-white rounded-2xl  min-h-[360px] shadow p-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
           <div class="flex items-center gap-4 mb-4">
-            <img src="img/mary jones.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <img src="img/mary jones.jpg" class="w-14 h-14 rounded-full object-cover" alt="Mary Jones">
             <div>
               <h4 class="font-bold">Mary Jones</h4>
               <p class="text-sm text-gray-500">Laketown, OH</p>
             </div>
           </div>
-          <p class="text-gray-600">Healer is a place where you feel safe and well cared for. Attentive specialists, modern methods and a warm approach.</p>
+          <p class="text-gray-600 mt-10">Healer is a place where you feel safe and well cared for. Attentive specialists, modern methods and a warm approach.</p>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6">
+        <div class="testimonial-card opacity-0 translate-y-8 transition-all duration-700 bg-white rounded-2xl  min-h-[260px] shadow p-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
           <div class="flex items-center gap-4 mb-4">
-            <img src="img/andrew walker.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <img src="img/andrew walker.jpg" class="w-14 h-14 rounded-full object-cover" alt="Andrew Walker">
             <div>
               <h4 class="font-bold">Andrew Walker</h4>
               <p class="text-sm text-gray-500">Omaha, NE</p>
             </div>
           </div>
-          <p class="text-gray-600">Skilled doctors, smart tools and a patient-first focus. Every visit shows trust and support.</p>
+          <p class="text-gray-600 mt-10">Skilled doctors, smart tools and a patient-first focus. Every visit shows trust and support.</p>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6">
+        <div class="testimonial-card opacity-0 translate-y-8 transition-all duration-700 bg-white rounded-2xl  min-h-[260px] shadow p-6 transform transition duration-300 hover:-translate-y-2 hover:shadow-lg">
           <div class="flex items-center gap-4 mb-4">
-            <img src="img/eva brown.jpg" class="w-14 h-14 rounded-full object-cover" alt="">
+            <img src="img/eva brown.jpg" class="w-14 h-14 rounded-full object-cover" alt="Eva Brown">
             <div>
               <h4 class="font-bold">Eva Brown</h4>
               <p class="text-sm text-gray-500">Austin, TX</p>
             </div>
           </div>
-          <p class="text-gray-600">Dedicated doctors, personalized care and a commitment to well-being.</p>
+          <p class="text-gray-600 mt-10">Dedicated doctors, personalized care and a commitment to well-being.</p>
         </div>
       </div>
+
+      <!-- Mobile Slider -->
+      <div class="md:hidden relative overflow-hidden">
+        <div id="patientsSlider" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Slide 1 -->
+          <div class="min-w-full p-4">
+            <div class="bg-white rounded-2xl min-h-[260px] shadow p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/mary jones.jpg" class="w-14 h-14 rounded-full object-cover" alt="Mary Jones">
+                <div>
+                  <h4 class="font-bold">Mary Jones</h4>
+                  <p class="text-sm text-gray-500">Laketown, OH</p>
+                </div>
+              </div>
+              <p class="text-gray-600 mt-10">Healer is a place where you feel safe and well cared for. Attentive specialists, modern methods and a warm approach.</p>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="min-w-full p-4">
+            <div class="bg-white rounded-2xl min-h-[260px] shadow p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/andrew walker.jpg" class="w-14 h-14 rounded-full object-cover" alt="Andrew Walker">
+                <div>
+                  <h4 class="font-bold">Andrew Walker</h4>
+                  <p class="text-sm text-gray-500">Omaha, NE</p>
+                </div>
+              </div>
+              <p class="text-gray-600 mt-10">Skilled doctors, smart tools and a patient-first focus. Every visit shows trust and support.</p>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="min-w-full p-4">
+            <div class="bg-white rounded-2xl min-h-[260px] shadow p-6">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="img/eva brown.jpg" class="w-14 h-14 rounded-full object-cover" alt="Eva Brown">
+                <div>
+                  <h4 class="font-bold">Eva Brown</h4>
+                  <p class="text-sm text-gray-500">Austin, TX</p>
+                </div>
+              </div>
+              <p class="text-gray-600 mt-10">Dedicated doctors, personalized care and a commitment to well-being.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Buttons -->
+        <button id="prevSlide" aria-label="Previous"
+          class="absolute left-2 top-1/2 -translate-y-1/2 text-black text-6xl font-bold leading-none">‹</button>
+        <button id="nextSlide" aria-label="Next"
+          class="absolute right-2 top-1/2 -translate-y-1/2 text-black text-6xl font-bold leading-none">›</button>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ============= HEALTH CARE ============= -->
   <section class="bg-gray-50 py-16">

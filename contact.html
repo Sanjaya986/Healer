@@ -9,10 +9,11 @@
 <body class="bg-red-400 text-gray-900">
 
  <!-- ============= NAVBAR ============= -->
-  <header class="fixed top-0 inset-x-0 z-50 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-red-400">
+  <header class="fixed top-0 inset-x-0 z-50 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/20">
     <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
       <a href="#" class="flex items-center gap-2">
-        <img src="img/logo-black-text.png" class="h-8 w-auto" alt="Healer logo" />
+        <img src="img/logo-black-text.png" alt="Healer Logo" 
+              class="h-6 sm:h-5 md:h-8 w-auto" />
         <span class="hidden sm:block text-white font-semibold tracking-wide"></span>
       </a>
 
@@ -40,7 +41,7 @@
         <li><a href="appoint.html" class="hover:text-orange-400">Appointment</a></li>
 
         <li>
-          <a href="contact.html" class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium">
+          <a href="contact.html" class="inline-flex items-center hover:bg-red-200 text-black py-2 px-4 rounded-md text-sm font-medium">
             Contact Us
           </a>
         </li>
@@ -53,12 +54,12 @@
     <!-- mobile menu -->
     <div id="mobileMenu" class="md:hidden hidden">
       <ul class="px-6 pb-6 space-y-4 text-black">
-        <li><a class="block py-2 border-b border-white/10" href="index.html">Home</a></li>
+        <li><a class="block py-2 border-b hover:text-white border-white/10" href="index.html">Home</a></li>
        
-        <li><a class="block py-2 border-b border-white/10" href="appoint.html">Appointment</a></li>
+        <li><a class="block py-2 border-b hover:text-white border-white/10" href="appoint.html">Appointment</a></li>
         <li>
-          <a href="contact.html" class="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-md text-sm font-medium">
-            Contact Us
+          <a href="contact.html" class="inline-flex items-start hover:text-white text-black py-2 px-4 rounded-md text-sm font-medium">
+           Contact Us
           </a>
         </li>
       </ul>
