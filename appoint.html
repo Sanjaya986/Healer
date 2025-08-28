@@ -139,14 +139,12 @@
     <p id="successMsg" class="mt-4 text-green-600 font-semibold hidden">✅ Appointment booked successfully!</p>
   </section>
 
-  <script src="script.js">
+  <script src="script.min.js">
     document.getElementById("appointmentForm").addEventListener("submit", function(e){
       e.preventDefault();
       document.getElementById("successMsg").classList.remove("hidden");
       this.reset();
     });
-
-   
 
   </script>
 </body>
